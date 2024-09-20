@@ -25,8 +25,8 @@ La fuente de información del proyecto fué proporcionada en Google Drive, los a
 Se utiliza la plataforma Google Cloud, especificamente Clous Storage para generar los siguientes buckets.
 Solo se tomo la información de los estados de Florida (FL), New York (NY), Illinois (IL) y California (CL), para los años de 2016 a 2022. </p>
 
-- 💾 **`Buquet g1_datos_crudos`** : Contiene los datos originales sin procesar. Los datos provienen de las fuentes explicadas anteriormente, y se mantienen en este bucket antes de aplicarles cualquier transformación. </p>
-- 💾 **`Buquet g1_datos_limpios`** : Contiene la data ya procesada y normalizada. Este bucket se divide en dos secciones: </p>
+- 💾 **`Buquet datos_crudos`** : Contiene los datos originales sin procesar. Los datos provienen de las fuentes explicadas anteriormente, y se mantienen en este bucket antes de aplicarles cualquier transformación. </p>
+- 💾 **`Buquet datos_limpios`** : Contiene la data ya procesada y normalizada. Este bucket se divide en dos secciones: </p>
   - Datos de Google: Incluye dos tablas:
     - Metadata del negocio: Donde se guarda toda la información sobre los negocios.
     - Reviews de negocios: Donde almaceno las reseñas de los negocios.
@@ -36,8 +36,8 @@ Solo se tomo la información de los estados de Florida (FL), New York (NY), Illi
     - Reviews: Donde se almacenan todas las reseñas asociadas a los negocios de Yelp.
     - Users y Tips: Una tabla que contiene información sobre los usuarios y los tips que dejan en la plataforma.
 
-- 💾 **`Buquet g1_datos_nuevos`** : Este es el bucket donde se cargan nuevos archivos de datos. Cuando se suben archivos nuevos a este bucket, una Cloud Function se activa automáticamente, validando que el archivo tenga la estructura correcta y verificando si el archivo ya ha sido procesado. Si todo es correcto, procede a realizar las transformaciones necesarias. </p>
-- 💾 **`Buquet g1_carga_incremental`** : Contiene los archivos nuevos normalizados despues decorrerse las funciones de carga incremental </p>
+- 💾 **`Buquet datos_nuevos`** : Este es el bucket donde se cargan nuevos archivos de datos. Cuando se suben archivos nuevos a este bucket, una Cloud Function se activa automáticamente, validando que el archivo tenga la estructura correcta y verificando si el archivo ya ha sido procesado. Si todo es correcto, procede a realizar las transformaciones necesarias. </p>
+- 💾 **`Buquet carga_incremental`** : Contiene los archivos nuevos normalizados despues decorrerse las funciones de carga incremental </p>
   
   </p>
 (FALTA INCLUIR IMAGEN DE LOS BUCKETS)
