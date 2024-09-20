@@ -25,10 +25,19 @@ La fuente de información del proyecto fué proporcionada en Google Drive, los a
 Se utiliza la plataforma Google Cloud, especificamente Clous Storage para generar los siguientes buckets.
 Solo se tomo la información de los estados de Florida (FL), New York (NY), Illinois (IL) y California (CL), para los años de 2016 a 2022. </p>
 
-- 💾 **`Buquet g1_datos_crudos`** : Contiene la data inicial filtrada, previa normalización. </p>
-- 💾 **`Buquet g1_datos_limpios`** : Contiene la data normalizada. </p>
-- 💾 **`Buquet g1_datos_nuevos`** : Contiene los datos nuevos previa normalización. </p>
-- 💾 **`Buquet g1_carga_incremental`** : Contiene los archivos nuevos normalizados para generar las funciones de carga incremental </p>
+- 💾 **`Buquet g1_datos_crudos`** : Contiene los datos originales sin procesar. Los datos provienen de las fuentes explicadas anteriormente, y se mantienen en este bucket antes de aplicarles cualquier transformación. </p>
+- 💾 **`Buquet g1_datos_limpios`** : Contiene la data ya procesada y normalizada. Este bucket se divide en dos secciones: </p>
+  - Datos de Google: Incluye dos tablas:
+    - Metadata del negocio: Donde se guarda toda la información sobre los negocios.
+    - Reviews de negocios: Donde almaceno las reseñas de los negocios.
+      </p>
+  - Datos de Yelp: Incluye tres tablas:
+    - Business: Contiene la información sobre los negocios de Yelp.
+    - Reviews: Donde se almacenan todas las reseñas asociadas a los negocios de Yelp.
+    - Users y Tips: Una tabla que contiene información sobre los usuarios y los tips que dejan en la plataforma.
+
+- 💾 **`Buquet g1_datos_nuevos`** : Este es el bucket donde se cargan nuevos archivos de datos. Cuando se suben archivos nuevos a este bucket, una Cloud Function se activa automáticamente, validando que el archivo tenga la estructura correcta y verificando si el archivo ya ha sido procesado. Si todo es correcto, procede a realizar las transformaciones necesarias. </p>
+- 💾 **`Buquet g1_carga_incremental`** : Contiene los archivos nuevos normalizados despues decorrerse las funciones de carga incremental </p>
   
   </p>
 (FALTA INCLUIR IMAGEN DE LOS BUCKETS)
@@ -39,8 +48,32 @@ Solo se tomo la información de los estados de Florida (FL), New York (NY), Illi
 (FALTA INCLUIR IMAGEN)
 </p>
 
-## :white_check_mark: ```Carga Incremental y Cloud Functions```
+## :white_check_mark: ```Automatización con Cloud Function```
 
+Para automatizar todo el proceso, se creó una ☁️ Cloud Function ☁️ que se ejecuta cuando se suben nuevos archivos al bucket datanueva. 
+Esta función:
+
+- Valida la estructura de los datos nuevos. 🆕
+- Verifica que los datos no existan previamente en el bucket data limpia. 🔃
+- Realiza las transformaciones necesarias🔄 y
+- Concatena los datos procesados con los que ya están en data limpia. ☑️
+
+Finalmente, los datos transformados se cargan automáticamente en BigQuery. 
+
+## :white_check_mark: ```Carga Automática en BigQuery```
+
+Una vez que los datos están procesados y almacenados en data limpia, se envían automáticamente a BigQuery, donde se han creado las siguientes tablas para almacenar los datos de manera estructurada y facilitar su análisis posterior:
+
+**Para los datos de Google:**
+- Tabla de **`Metadata del negocio:`** Guarda toda la información relevante sobre los negocios.
+- Tabla de **`Reviews de negocios:`** Esta tabla almacena todas las reseñas de los negocios procesados.
+
+**Para los datos de Yelp:** 
+- Tabla de **`Business:`** Contiene los datos de los negocios extraídos de Yelp.
+- Tabla de **`Reviews:`** Almacena las reseñas asociadas a los negocios.
+- Tabla de **`Users y Tips:`** Esta tabla contiene información sobre los usuarios y los tips que dejan en la plataforma.
+
+De esta manera, se ha automatizado todo el flujo de trabajo ETL: desde la carga de archivos en Google Cloud Storage, la transformación de los datos mediante Cloud Functions, hasta la carga final en BigQuery, desde donde se pueden realizar consultas y análisis de forma rápida y eficiente.
 </p>
 (FALTA INCLUIR IMAGEN)
 </p>
