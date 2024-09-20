@@ -42,10 +42,6 @@ Solo se tomo la información de los estados de Florida (FL), New York (NY), Illi
   </p>
 (FALTA INCLUIR IMAGEN DE LOS BUCKETS)
 
-## :white_check_mark: ```Data Warehouse```
-</p>
-
-(FALTA INCLUIR IMAGEN)
 </p>
 
 ## :white_check_mark: ```Automatización con Cloud Function```
@@ -73,6 +69,8 @@ Una vez que los datos están procesados y almacenados en data limpia, se envían
 - Tabla de **`Reviews:`** Almacena las reseñas asociadas a los negocios.
 - Tabla de **`Users y Tips:`** Esta tabla contiene información sobre los usuarios y los tips que dejan en la plataforma.
 
+## :white_check_mark: ```Data Warehouse```
+</p>
 De esta manera, se ha automatizado todo el flujo de trabajo ETL: desde la carga de archivos en Google Cloud Storage, la transformación de los datos mediante Cloud Functions, hasta la carga final en BigQuery, desde donde se pueden realizar consultas y análisis de forma rápida y eficiente.
 </p>
 (FALTA INCLUIR IMAGEN)
