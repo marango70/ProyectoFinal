@@ -99,8 +99,16 @@ El dashboard se realizará en 📊 `Power BI` 📊 y tendrá el siguiente esquem
 **3. KPI's:** Cada KPI tendrá una página en la cual se representa una grafica de barras con sus valores más recientes y diferentes objetos para contextualizar. Tambien se incluyen indicadores asociados, por ejemplo, para el KPI 2, Indice de oportunidades de Mejora, el cual estám dado por el número de calificaciones entre ⭐ y ⭐⭐ dividido el total de calificaciones, se incluirá tambien el indice para las calificaciones neutras (⭐⭐⭐) y el indice de calificaciones positivas (⭐⭐⭐⭐ y ⭐⭐⭐⭐⭐).
 
 **4. Mercado:** Contiene un contexto general del mercado gastronómico en los 4 estados 🗺️ seleccionados. 
+  
   (FALTA INCLUIR IMAGEN)
   </p>
+
+  ## :white_check_mark: ```Sistema de Recomendación```
+
+Para el modelo de recomendación se utilizará Machine Learning, especificamente el algoritmo de Similitud Del Coceno.
+
+La similitud del :atom: coseno :atom: mide qué tan similares son dos elementos basándose en sus características. En lugar de mirar las diferencias o similitudes directas entre características, se mide el ángulo entre dos vectores que las representan. 
+Si el ángulo es pequeño (coseno cercano a 1), los elementos son muy similares; si el ángulo es grande (coseno cercano a 0), los elementos son menos similares.
   </p>
   
 
